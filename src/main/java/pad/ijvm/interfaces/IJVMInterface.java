@@ -59,9 +59,9 @@ public interface IJVMInterface {
     void run();
 
     /**
-     * @return The value of the current instruction represented as an integer.
+     * @return The value of the current instruction represented as a byte.
      */
-    int getInstruction();
+    byte getInstruction();
 
     /**
      * Sets the standard output of the IJVM instance.

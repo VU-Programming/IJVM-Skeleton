@@ -11,7 +11,7 @@ public class MachineFactory {
         // Create new machine instance here and return it.
 
         // 1) Load the binary
-        // 2) Start a new IJVM instance.
+        // 2) Return the new IJVM instance without starting it.
         return null;
     }
 
