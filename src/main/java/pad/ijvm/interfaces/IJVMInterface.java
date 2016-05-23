@@ -23,6 +23,12 @@ public interface IJVMInterface {
 
     /**
      *
+     * @return The current loaded program text as an byte array.
+     */
+    byte[] getText();
+
+    /**
+     *
      * @return The value of the program counter (as an offset from the first instruction).
      */
     int getProgramCounter();
