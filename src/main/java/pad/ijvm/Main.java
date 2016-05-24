@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
 
     static void printUsage() {
-        System.out.println("Usage: java ijvm file.bin");
+        System.out.println("Usage: java Main file.bin");
     }
 
     public static void main(String args[]) {
@@ -21,7 +21,7 @@ public class Main {
             File binary = new File(args[0]);
 
             // Create the ijvm instance
-            MachineFactory.createIJVMMachine(binary).run();
+            MachineFactory.createIJVMInstance(binary).run();
         } catch (FileNotFoundException e) {
             System.err.printf("%s\n", e.getMessage());
         } catch (IOException e) {

@@ -14,7 +14,7 @@ public class BaseTest {
 
     @Before
     public void setUp() throws Exception {
-        machine = MachineFactory.createIJVMMachine(new File("files/testmem.bin"));
+        machine = MachineFactory.createIJVMInstance(new File("files/testmem.bin"));
     }
 
     @After
