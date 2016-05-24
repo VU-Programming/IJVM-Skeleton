@@ -4,6 +4,7 @@ import pad.ijvm.interfaces.IJVMInterface;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
@@ -24,7 +25,7 @@ public class BaseTest {
     // BEGIN Test scenarios
     @Test
     public void testBipush() throws Exception {
-
+        assertEquals(true, true);
     }
 
     @Test

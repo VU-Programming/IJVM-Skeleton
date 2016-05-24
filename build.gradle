@@ -42,6 +42,14 @@ jar {
     }
 }
 
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+
 run {
     /* Can pass all the properties: */
     systemProperties System.properties
