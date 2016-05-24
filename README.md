@@ -4,25 +4,25 @@ The tests can be found in src/test/java/pad/ijvm/
 
 To build the project:
 ```bash
-gradle build
+./gradlew build
 ```
 
 To run:
 ```bash
-gradle run
+./gradlew run
 ```
 
 
 If you want to import the project in IntelliJ execute:
 ```bash
-gradle idea
+./gradlew idea
 ```
 Then import the project using 'File - Open'.
 
 
 If you want to import the project in Eclipse execute:
 ```bash
-gradle eclipse
+./gradlew eclipse
 ```
 Then import the project using 'File - Import'.
 
