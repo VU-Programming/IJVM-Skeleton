@@ -18,10 +18,12 @@ test:
   
 github_deploy:
    stage: deploy
-   image: docker:git
    script:
-   - echo $GITHUB_KEY > github.key
+   - eval $(ssh-agent -s)
+   - ssh-add <(echo "$GITHUB_KEY")
+   - mkdir -p ~/.ssh
+   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
    - git remote add github git@github.com:VU-Programming/IJVM-Skeleton.git
-   - GIT_SSH_COMMAND='ssh -i github.key' git push github master
+   - git push github master
    only:
    - master
