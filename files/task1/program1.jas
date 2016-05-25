@@ -1,0 +1,9 @@
+.constant
+.end-constant
+
+.main
+	BIPUSH 0x30
+	BIPUSH 0x31
+	IADD
+	OUT
+.end-main
