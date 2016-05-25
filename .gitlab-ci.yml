@@ -15,3 +15,13 @@ test:
   image: java:8
   script:
   - ./gradlew test
+  
+github_deploy:
+   stage: deploy
+   image: docker:git
+   script:
+   - echo $GITHUB_KEY > github.key
+   - git remote add github git@github.com:VU-Programming/IJVM-Skeleton.git
+   - GIT_SSH_COMMAND='ssh -i github.key' git push github master
+   only:
+   - master
