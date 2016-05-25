@@ -18,10 +18,9 @@ test:
   
 github_deploy:
    stage: deploy
-   image: docker:git
    script:
-   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-   - eval $(ssh-agent -s)
+   - apt-get update -y && apt-get install git openssh-client -y
+   - 'eval $(ssh-agent -s)'
    - ssh-add <(echo "$GITHUB_KEY")
    - mkdir -p ~/.ssh
    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
