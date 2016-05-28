@@ -18,8 +18,8 @@ test:
   
 github_deploy:
    stage: deploy
+   image: sirmc/latex-build
    script:
-   - apt-get update -y && apt-get install git openssh-client -y
    - 'eval $(ssh-agent -s)'
    - ssh-add <(echo "$GITHUB_KEY")
    - mkdir -p ~/.ssh
