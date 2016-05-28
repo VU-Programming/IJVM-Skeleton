@@ -25,8 +25,8 @@ public class Test1 {
         assertTrue("Length of 'method' block should be equal to 6.", text.length == 6);
         assertTrue("First instruction should be equal to 'BIPUSH'.", text[0] == (byte) 0x10);
         assertTrue("Second instruction should be equal to 'BIPUSH'.", text[2] == (byte) 0x10);
-        assertTrue("Third instruction should be equal to 'IADD'.", text[4] == (byte) 0x31);
-        assertTrue("Fourth instruction should be equal to 'OUT'.", text[5] == (byte) 0x60);
+        assertTrue("Third instruction should be equal to 'IADD'.", text[4] == (byte) 0x60);
+        assertTrue("Fourth instruction should be equal to 'OUT'.", text[5] == (byte) 0xFD);
     }
 
     @Test
@@ -34,16 +34,17 @@ public class Test1 {
         machine = MachineFactory.createIJVMInstance(new File("files/task1/program2.ijvm"));
         byte[] text = machine.getText();
 
-        assertTrue("Length of 'method' block should be equal to 12.", text.length == 6);
+        assertTrue("Length of 'method' block should be equal to 15.", text.length == 15);
         assertTrue("First instruction should be equal to 'NOP'.", text[0] == (byte) 0x00);
         assertTrue("Second instruction should be equal to 'LDC_W'.", text[1] == (byte) 0x13);
-        assertTrue("Third instruction should be equal to 'DUP'.", text[3] == (byte) 0x59);
-        assertTrue("Fourth instruction should be equal to 'LDC_W'.", text[4] == (byte) 0x13);
-        assertTrue("Fifth instruction should be equal to 'IADD'.", text[6] == (byte) 0x60);
-        assertTrue("Sixth instruction should be equal to 'LDC_W'.", text[7] == (byte) 0x13);
-        assertTrue("Seventh instruction should be equal to 'IADD'.", text[9] == (byte) 0x60);
-        assertTrue("Eight instruction should be equal to 'OUT'.", text[10] == (byte) 0xFD);
-        assertTrue("Ninth instruction should be equal to 'NOP'.", text[11] == (byte) 0x00);
+        assertTrue("Third instruction should be equal to 'DUP'.", text[4] == (byte) 0x59);
+        assertTrue("Fourth instruction should be equal to 'LDC_W'.", text[5] == (byte) 0x13);
+        assertTrue("Fifth instruction should be equal to 'IADD'.", text[8] == (byte) 0x60);
+        assertTrue("Sixth instruction should be equal to 'LDC_W'.", text[9] == (byte) 0x13);
+        assertTrue("Seventh instruction should be equal to 'IADD'.", text[12] == (byte) 0x60);
+        assertTrue("Eight instruction should be equal to 'OUT'.", text[13] == (byte) 0xFD);
+        assertTrue("Ninth instruction should be equal to 'NOP'.", text[14] == (byte) 0x00);
+
     }
 
     @Test
