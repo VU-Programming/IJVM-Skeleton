@@ -1,0 +1,7 @@
+.main
+    BIPUSH 10
+    BIPUSH 20
+    SWAP
+    POP
+    OUT
+.end-main

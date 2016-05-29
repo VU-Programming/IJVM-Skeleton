@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 
-public class Test4 {
+public class Task4 {
 
     IJVMInterface machine;
 

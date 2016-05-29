@@ -1,0 +1,6 @@
+.main
+    BIPUSH -10
+    BIPUSH -20
+    ISUB
+    OUT
+.end-main
