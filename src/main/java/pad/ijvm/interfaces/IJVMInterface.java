@@ -75,4 +75,18 @@ public interface IJVMInterface {
      */
     void setInput(InputStream in);
 
+
+
+
+    /**
+     * You can ignore this method.
+     *
+     * Default method to conveniently execute multiple steps at once.
+     * @param n, The number of steps that should be executed.
+     */
+    default void steps(int n) {
+        for (int i = 0; i < n; i++) {
+            this.step();
+        }
+    }
 }
