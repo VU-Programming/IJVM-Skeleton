@@ -56,7 +56,9 @@ public class Task2 {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIsub1.ijvm"));
 
         machine.step();
-        assertEquals("The result of ISUB should be 10", machine.topOfStack(), 10);
+        machine.step();
+        machine.step();
+        assertEquals("The result of ISUB should be -10", machine.topOfStack(), -10);
     }
 
     @Test
@@ -64,7 +66,9 @@ public class Task2 {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIsub2.ijvm"));
 
         machine.step();
-        assertEquals("The result of ISUB should be -10", machine.topOfStack(), -10);
+        machine.step();
+        machine.step();
+        assertEquals("The result of ISUB should be 10", machine.topOfStack(), 10);
     }
 
     @Test
