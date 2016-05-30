@@ -1,0 +1,8 @@
+.main
+    BIPUSH 19
+    BIPUSH 12
+    BIPUSH -135
+    IOR
+    IOR
+    OUT
+.end-main

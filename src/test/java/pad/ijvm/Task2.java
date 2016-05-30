@@ -20,7 +20,7 @@ public class Task2 {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestBipush1.ijvm"));
 
         machine.step();
-        assertEquals("The top of the stack should be 42", machine.topOfStack(), 42);
+        assertEquals("The top of the stack should be 42.", 42, machine.topOfStack());
     }
 
     @Test
@@ -28,47 +28,55 @@ public class Task2 {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestBipush2.ijvm"));
 
         machine.step();
-        assertEquals("The top of the stack should be -42", machine.topOfStack(), -42);
+        assertEquals("The top of the stack should be -42.", -42, machine.topOfStack());
     }
 
     @Test
     public void testSimpleIadd() throws IOException {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIadd1.ijvm"));
 
-        machine.step();
-        machine.step();
-        machine.step();
-        assertEquals("The result of IADD should be 60", machine.topOfStack(), 60);
+        machine.steps(3);
+        assertEquals("The result of IADD should be 60.", 60, machine.topOfStack());
     }
 
     @Test
     public void testSignedIadd() throws IOException {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIadd2.ijvm"));
 
-        machine.step();
-        machine.step();
-        machine.step();
-        assertEquals("The result of IADD should be -60", machine.topOfStack(), -60);
+        machine.steps(3);
+        assertEquals("The result of IADD should be -60.", -60, machine.topOfStack());
     }
 
     @Test
     public void testSimpleIsub() throws IOException {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIsub1.ijvm"));
 
-        machine.step();
-        machine.step();
-        machine.step();
-        assertEquals("The result of ISUB should be -10", machine.topOfStack(), -10);
+        machine.steps(3);
+        assertEquals("The result of ISUB should be -10.", -10, machine.topOfStack());
     }
 
     @Test
     public void testSignedIsub() throws IOException {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIsub2.ijvm"));
 
-        machine.step();
-        machine.step();
-        machine.step();
-        assertEquals("The result of ISUB should be 10", machine.topOfStack(), 10);
+        machine.steps(3);
+        assertEquals("The result of ISUB should be 10.", 10, machine.topOfStack());
+    }
+
+    @Test
+    public void testSimpleIAND() throws IOException {
+        machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIAND1.ijvm"));
+
+        machine.steps(5);
+        assertEquals("The result of IAND should be 1.", 1, machine.topOfStack());
+    }
+
+    @Test
+    public void testSimpleIOR() throws IOException {
+        machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIOR1.ijvm"));
+
+        machine.steps(5);
+        assertEquals("The result of IAND should be 127.", 127, machine.topOfStack());
     }
 
     @Test
@@ -76,29 +84,25 @@ public class Task2 {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestSwap1.ijvm"));
 
         machine.step();
-        assertEquals("The TOS should be 10", machine.topOfStack(), 10);
+        assertEquals("The TOS should be 10.", 10, machine.topOfStack());
         machine.step();
-        assertEquals("The TOS should be 20", machine.topOfStack(), 20);
+        assertEquals("The TOS should be 20.", 20, machine.topOfStack());
         machine.step();
-        assertEquals("Swap should swap the variables", machine.topOfStack(), 10);
+        assertEquals("Swap should swap the variables.", 10, machine.topOfStack());
         machine.step();
-        assertEquals("The top if the stack should now be 20", machine.topOfStack(), 20);
+        assertEquals("The top if the stack should now be 20.", 20, machine.topOfStack());
     }
 
     @Test
     public void testSimpleStackOperations() throws IOException {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestPop1.ijvm"));
 
+        machine.steps(3);
+        assertEquals("Pop should pop the value of the stack.", 10, machine.topOfStack());
+        machine.steps(3);
+        assertEquals("The result of IADD should be 50.", 50, machine.topOfStack());
         machine.step();
-        machine.step();
-        machine.step();
-        assertEquals("Pop should pop the value of the stack", machine.topOfStack(), 10);
-        machine.step();
-        machine.step();
-        machine.step();
-        assertEquals("The result of IADD should be 50", machine.topOfStack(), 50);
-        machine.step();
-        assertEquals("Pop should pop the value of the stack", machine.topOfStack(), 10);
+        assertEquals("Pop should pop the value of the stack.", 10, machine.topOfStack());
     }
 
 
