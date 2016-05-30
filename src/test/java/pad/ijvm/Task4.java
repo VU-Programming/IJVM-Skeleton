@@ -97,4 +97,31 @@ public class Task4 {
         assertEquals("This test should output 'kjihgfedcbaabcd'", "kjihgfedcbaabcd", baos.toString());
     }
 
+    @Test
+    public void testIINC() throws IOException {
+        machine = MachineFactory.createIJVMInstance(new File("files/task4/IINCTest.ijvm"));
+
+        machine.steps(4);
+        assertEquals("Variable 'hi' should have value 0 now.", 0, machine.getLocalVariable(0));
+        assertEquals("Variable 'there' should have value 0 now.", 0, machine.getLocalVariable(1));
+
+        machine.step();
+        assertEquals("Variable 'hi' should have value 0 now.", 0, machine.getLocalVariable(0));
+        machine.step();
+        assertEquals("Variable 'hi' should have value 1 now.", 1, machine.getLocalVariable(0));
+        machine.step();
+        assertEquals("Variable 'hi' should have value 4 now.", 4, machine.getLocalVariable(0));
+
+        machine.step();
+        assertEquals("Variable 'there' should have value 0 now.", 0, machine.getLocalVariable(1));
+        machine.step();
+        assertEquals("Variable 'there' should have value -1 now.", -1, machine.getLocalVariable(1));
+        machine.step();
+        assertEquals("Variable 'there' should have value -4 now.", -4, machine.getLocalVariable(1));
+
+
+    }
+
+
+
 }
