@@ -1,4 +1,4 @@
-package pad.ijvm.advanced;
+package pad.advanced;
 
 import org.junit.Test;
 import pad.ijvm.MachineFactory;

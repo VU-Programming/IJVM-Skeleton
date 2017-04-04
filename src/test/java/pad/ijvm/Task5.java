@@ -34,7 +34,7 @@ public class Task5 {
     @Test(timeout=5000)
     public void testInvoke1() throws IOException {
 
-        machine = MachineFactory.createIJVMInstance(new File("files/advanced/test-invokevirtual1.ijvm"));
+        machine = MachineFactory.createIJVMInstance(new File("files/task5/test-invokevirtual1.ijvm"));
         machine.step();
         machine.step();
         machine.step();
@@ -57,7 +57,7 @@ public class Task5 {
     @Test(timeout=5000)
     public void testIreturn1() throws IOException {
 
-        machine = MachineFactory.createIJVMInstance(new File("files/advanced/test-invokevirtual1.ijvm"));
+        machine = MachineFactory.createIJVMInstance(new File("files/task5/test-invokevirtual1.ijvm"));
         machine.step();
         machine.step();
         machine.step();
@@ -80,7 +80,7 @@ public class Task5 {
     @Test(timeout=5000)
     public void testInvoke2() throws IOException {
 
-        machine = MachineFactory.createIJVMInstance(new File("files/advanced/test-invokevirtual2.ijvm"));
+        machine = MachineFactory.createIJVMInstance(new File("files/task5/test-invokevirtual2.ijvm"));
         machine.step();
         machine.step();
         machine.step();
@@ -108,7 +108,7 @@ public class Task5 {
     @Test(timeout=5000)
     public void testIreturn2() throws IOException {
 
-        machine = MachineFactory.createIJVMInstance(new File("files/advanced/test-invokevirtual2.ijvm"));
+        machine = MachineFactory.createIJVMInstance(new File("files/task5/test-invokevirtual2.ijvm"));
         machine.step();
         machine.step();
         machine.step();
