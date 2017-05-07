@@ -1,7 +1,3 @@
-.method test(a, b)
-      IADD
-      IRETURN
-.end-method
 .main
         BIPUSH 0x40
         BIPUSH 0x41
@@ -9,3 +5,7 @@
         INVOKEVIRTUAL test
         HALT     
 .end-main
+.method test(a, b)
+      IADD
+      IRETURN
+.end-method

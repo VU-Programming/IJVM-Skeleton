@@ -27,8 +27,6 @@ public class Task5 {
         machine.step();
         machine.step();
         assertEquals("After IRETURN the TOS should be 0x43",machine.topOfStack(), 0x43);
-        machine.step();
-        assertEquals("After IADD the TOS should be 0x45",machine.topOfStack(), 0x45);
     }
 
     @Test(timeout=5000)
