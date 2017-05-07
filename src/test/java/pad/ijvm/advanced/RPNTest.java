@@ -1,4 +1,4 @@
-package pad.advanced;
+package pad.ijvm.advanced;
 
 
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class RPNTest {
     @Test(timeout=5000)
     public void Test1() throws IOException {
 
-        assertEquals("Test RPN 0 0 +", "0\n",run("00+?."));
+        assertEquals("Test RPN 0 0 +", "0\n",run("0 0 +?."));
         assertEquals("Test RPN 0 9 +", "9\n",run("0 9 +?."));
         assertEquals("Test RPN 9 0 +", "9\n",run("9 0 +?."));
         assertEquals("Test RPN 9 9 -", "0\n",run("9 9 -?."));

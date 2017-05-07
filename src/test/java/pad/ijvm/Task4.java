@@ -22,7 +22,7 @@ public class Task4 {
         machine.step();
         assertEquals("The second constant should be 2", machine.topOfStack(), 2);
         machine.step();
-        assertEquals("The third constant shoult be 3", machine.topOfStack(), 3);
+        assertEquals("The third constant should be 3", machine.topOfStack(), 3);
     }
 
     @Test
