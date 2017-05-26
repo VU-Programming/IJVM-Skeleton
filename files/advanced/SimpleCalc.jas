@@ -25,6 +25,10 @@ END			0x2E
 mode //0 for end, 1 for numberreading, 2 for other
 tmp
 .end-var
+  // Add some things to the stack
+  BIPUSH 0x0
+  BIPUSH 0x0
+  BIPUSH 0x0
 	BIPUSH 2
 	ISTORE mode
 
