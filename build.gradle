@@ -44,6 +44,7 @@ jar {
 
 
 test {
+    exclude 'pad/ijvm/bonus/**' // Comment out to enable bonus tests
     testLogging {
         events "passed", "skipped", "failed"
     }
