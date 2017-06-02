@@ -24,7 +24,6 @@ public class AdvancedTestNestedInvoke {
 
         // in magic
         assertNotEquals("magic: Program counter should have changed", mainPC, machine.getProgramCounter());
-        assertEquals("magic: Return address should be on the stack", mainPC, machine.topOfStack());
         machine.step(); // LDC_W
         assertNotEquals("LDC_W: 0x9 should not be on the stack", 0x9, machine.topOfStack());
         int magicPC =  machine.getProgramCounter() + 3;
@@ -32,7 +31,6 @@ public class AdvancedTestNestedInvoke {
 
         // in addone
         assertNotEquals("addone: Program counter should have changed after INVOKEVIRTUAL", magicPC, machine.getProgramCounter());
-        assertEquals("addone: Return address should be on the stack", magicPC, machine.topOfStack());
         int addonePC =  machine.getProgramCounter() + 3;
         machine.step(); // BIPUSH 0
         machine.step(); // IRETURN
