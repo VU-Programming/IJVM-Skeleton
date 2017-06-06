@@ -44,7 +44,7 @@ backupi
     //print empty spaces
     LDC_W OBJREF
     LDC_W SPACE
-    ILOAD N
+    ILOAD n
     INVOKEVIRTUAL printntimes
     
     //print char
@@ -102,7 +102,7 @@ return:
     ISUB
     IFEQ return
 
-    ILOAD C
+    ILOAD c
     OUT
     
     IINC n -1
