@@ -76,7 +76,7 @@ public class Task2 {
         machine = MachineFactory.createIJVMInstance(new File("files/task2/TestIOR1.ijvm"));
 
         machine.steps(5);
-        assertEquals("The result of IAND should be 127.", 127, machine.topOfStack());
+        assertEquals("The result of IOR should be 127.", 127, machine.topOfStack());
     }
 
     @Test
