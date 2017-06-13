@@ -50,7 +50,7 @@ public class DiamondTest {
     
     private String hex(int op) { return Integer.toHexString(op); }
          
-    @Test
+    @Test(timeout=20000)
     public void testIn() throws IOException {
         
         newMachine("5");
@@ -74,7 +74,7 @@ public class DiamondTest {
         
     }
     
-    @Test
+    @Test(timeout=20000)
     public void testOut() throws IOException {
         newMachine("5");
         machine.run();
@@ -156,7 +156,7 @@ public class DiamondTest {
     static final byte HALT = (byte) 0xFF;
     
     
-    @Test
+    @Test(timeout=20000)
     public void testRecursiveCalls() throws Exception {
         newMachine("3");
         machine.steps(7); // first diamond
