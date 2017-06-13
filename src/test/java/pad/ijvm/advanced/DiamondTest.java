@@ -53,17 +53,6 @@ public class DiamondTest {
     @Test
     public void testIn() throws IOException {
         
-        try{
-            newMachine(" ");
-            machine.run();
-            //I guess everybody will be using an array based solution
-            //That still does not guarantee an ArrayIndexOutOfBoundsException
-            //will be thrown. So maybe keep an eye on this
-            fail("Should StackOverflow (ArrayIndexOutOfBoundsException)");
-        }catch (ArrayIndexOutOfBoundsException e) {}
-
-   
-        
         newMachine("5");
         
         machine.step();
