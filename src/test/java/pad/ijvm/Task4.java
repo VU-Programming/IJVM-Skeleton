@@ -87,7 +87,7 @@ public class Task4 {
         assertEquals("The top of the stack should be 3", machine.topOfStack(), 3);
     }
 
-    @Test
+    @Test(timeout=2000)
     public void testIterationLoad() throws IOException {
         machine = MachineFactory.createIJVMInstance(new File("files/task4/LoadTest4.ijvm"));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
