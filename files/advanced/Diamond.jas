@@ -44,7 +44,7 @@ backupi
     //print empty spaces
     LDC_W OBJREF
     LDC_W SPACE
-    ILOAD n
+    ILOAD N
     INVOKEVIRTUAL printntimes
     
     //print char
@@ -91,6 +91,7 @@ backupi
     OUT
     
 return:
+    BIPUSH 0x1 //Just a return value
     IRETURN
 .end-method
 
@@ -102,7 +103,7 @@ return:
     ISUB
     IFEQ return
 
-    ILOAD c
+    ILOAD C
     OUT
     
     IINC n -1
@@ -112,9 +113,9 @@ return:
     INVOKEVIRTUAL printntimes
     
 return:
+    BIPUSH 0x2 //Just a return value
     IRETURN
     
 .end-method
 
     
-
