@@ -1,0 +1,93 @@
+// very simple and boring tests for heap instructions
+// yawn
+
+.constant
+    SMALL_ARRAY_SIZE 43
+    LARGE_ARRAY_SIZE 0x10000
+.end-constant
+
+.main
+.var
+    smallArray1
+    smallArray2
+    largeArray
+    i
+    v
+.end-var
+
+    LDC_W SMALL_ARRAY_SIZE
+    NEWARRAY
+    ISTORE smallArray1
+
+    LDC_W SMALL_ARRAY_SIZE
+    NEWARRAY
+    ISTORE smallArray1
+
+    LDC_W LARGE_ARRAY_SIZE
+    NEWARRAY
+    ISTORE smallArray1
+
+// testing IASTORE
+store:
+    BIPUSH 0
+    ISTORE i
+
+    BIPUSH 0x30
+    ISTORE v
+
+store_loop:
+    LDC_W SMALL_ARRAY_SIZE
+    ILOAD i
+    IF_ICMPEQ print
+
+    ILOAD v
+    ILOAD i
+    ILOAD smallArray1
+    IASTORE
+
+    IINC i 1
+    IINC v 1
+    GOTO store_loop
+
+// testing the IALOAD
+print:
+    BIPUSH 0
+    ISTORE i
+
+print_loop:
+    LDC_W SMALL_ARRAY_SIZE
+    ILOAD i
+    IF_ICMPEQ alloc
+
+    ILOAD i
+    ILOAD smallArray1
+    IALOAD
+    OUT
+
+    IINC i 1
+    GOTO print_loop
+
+// testing large amount of NEWARRAY instructions
+alloc:
+    BIPUSH 0
+    ISTORE i
+
+alloc_loop:
+    LDC_W SMALL_ARRAY_SIZE
+    ILOAD i
+    IF_ICMPEQ done
+
+    // create matrix of LARGE_ARRAY_SIZE x LARGE_ARRAY_SIZE
+    LDC_W LARGE_ARRAY_SIZE
+    NEWARRAY
+    ILOAD i
+    ILOAD largeArray
+    IASTORE
+
+    IINC i 1
+    GOTO alloc_loop
+
+done:
+    HALT
+
+.end-main
