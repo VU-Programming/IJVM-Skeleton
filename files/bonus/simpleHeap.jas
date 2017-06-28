@@ -21,11 +21,11 @@
 
     LDC_W SMALL_ARRAY_SIZE
     NEWARRAY
-    ISTORE smallArray1
+    ISTORE smallArray2
 
     LDC_W LARGE_ARRAY_SIZE
     NEWARRAY
-    ISTORE smallArray1
+    ISTORE largeArray
 
 // testing IASTORE
 store:
