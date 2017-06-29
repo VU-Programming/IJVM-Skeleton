@@ -20,10 +20,9 @@
 // with a ':'. Aka the following program will output 'd'
 // ,+++.:a
 //
-// Note 2: This might be a difficult program to debug.
-// If avoidable, try debugging with simpleHeap first.
-// In case you really need to debug it, theres a bfi_debug version
-// available
+// Note 2: This might be a difficult program to debug, especially
+// given the fact that you interpret (brainfuck) on an interpreted (IJVM) platform, which itself is interpreted (JVM).
+// If avoidable, try debugging with other programs first. (like simpleHeap.jas)
 
 .constant
     OBJREF          0xdead
@@ -284,6 +283,24 @@ end:
     LDC_W STACK_SIZE  // stack = NEWARRAY(STACK_SIZE)
     NEWARRAY
     ISTORE stack
+
+// since the memory technically doesn't have to be initialised to 0, I put this in for safety
+init_mem_loop:
+    LDC_W MEMORY_SIZE
+    ILOAD memptr
+    IF_ICMPEQ done_init_mem
+
+    BIPUSH 0
+    ILOAD memptr
+    ILOAD memory
+    IASTORE
+
+    IINC memptr 1
+    GOTO init_mem_loop
+
+done_init_mem:
+    BIPUSH 0
+    ISTORE memptr
 
 exec_loop:
     // if we're at the end of the program, return
