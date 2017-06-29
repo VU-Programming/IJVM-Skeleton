@@ -1,18 +1,44 @@
-// very simple and boring tests for heap instructions
-// yawn
+// SimpleHeap test,
+// tests all the necessary heap instructions.
+//
+// for purposes of clarity I've added some pseudo code and
+// improved comments, also stopped compiling with debug symbols
+// as that's not the purpose of these tests.
+//
+// PSEUDO CODE:
+// func main() {
+//   smallArray1 = new Word[SMALL_ARRAY_SIZE];
+//   smallArray2 = new Word[SMALL_ARRAY_SIZE];
+//   largeArray = new Word[LARGE_ARRAY_SIZE];
+//
+//   # testing whether iastore works
+//   for (i = 0; i < SMALL_ARRAY_SIZE; i++) {
+//     smallArray1[i] = '0' + i;
+//   }
+//
+//   # testing whether we can read/print from the stored values
+//   for (i = 0; i < SMALL_ARRAY_SIZE; i++) {
+//     print(smallArray1[i]);
+//   }
+//
+//   # testing whether we can alloc some more memory
+//   for (i = 0; i < SMALL_ARRAY_SIZE; i++) {
+//     smallArray2[i] = new Word[LARGE_ARRAY_SIZE];
+//   }
+// }
 
 .constant
     SMALL_ARRAY_SIZE 43
-    LARGE_ARRAY_SIZE 0x10000
+    LARGE_ARRAY_SIZE 0x10000 /* aka 65000 */
 .end-constant
 
 .main
 .var
-    smallArray1
-    smallArray2
-    largeArray
-    i
-    v
+    smallArray1     // first array
+    smallArray2     // 2 arrays of same size should still have different references
+    largeArray      // simply used to check whether we can alloc a larger array
+    i               // counter
+    v               // will be used to store ascii symbols starting from '0'
 .end-var
 
     LDC_W SMALL_ARRAY_SIZE
@@ -67,7 +93,7 @@ print_loop:
     IINC i 1
     GOTO print_loop
 
-// testing large amount of NEWARRAY instructions
+// testing whether we can create a number of large arrays.
 alloc:
     BIPUSH 0
     ISTORE i
@@ -77,11 +103,11 @@ alloc_loop:
     ILOAD i
     IF_ICMPEQ done
 
-    // create matrix of LARGE_ARRAY_SIZE x LARGE_ARRAY_SIZE
+    // create matrix of SMALL_ARRAY_SIZE x LARGE_ARRAY_SIZE in smallArray2
     LDC_W LARGE_ARRAY_SIZE
     NEWARRAY
     ILOAD i
-    ILOAD largeArray
+    ILOAD smallArray2
     IASTORE
 
     IINC i 1
