@@ -232,6 +232,8 @@ ret1:
     NEWARRAY
     ISTORE newBuffer
 
+    BIPUSH 0
+    ISTORE i
 loop:
     ILOAD i
     ILOAD curSize
