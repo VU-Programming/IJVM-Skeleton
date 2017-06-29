@@ -7,13 +7,9 @@
 // 888 d88P888   888
 // 88888P" 888   888
 //
-// bfi.jas, the brainfuck interpreter, DEBUG edition.
+// bfi.jas, the brainfuck interpreter.
 // by Arthur de Fluiter, 2017
 // https://en.wikipedia.org/wiki/Brainfuck
-//
-// This program won't be run by the tests but can be
-// used to test why a certain brainfuck program does
-// not work.
 //
 // REQUIRES: Heap opeartions & simple invokevirtual
 //
@@ -23,6 +19,11 @@
 // input via stdin. This is done by delimiting the input
 // with a ':'. Aka the following program will output 'd'
 // ,+++.:a
+//
+// Note 2: This might be a difficult program to debug, especially
+// given the fact that you interpret (brainfuck) on an interpreted (IJVM) platform, which itself is interpreted (JVM).
+// If avoidable, try debugging with other programs first. (like simpleHeap.jas)
+
 .constant
     OBJREF          0xdead
 
@@ -281,6 +282,9 @@ ret1:
     NEWARRAY
     ISTORE newBuffer
 
+    BIPUSH 0
+    ISTORE i
+
 loop:
     ILOAD i
     ILOAD curSize
@@ -332,6 +336,24 @@ end:
     LDC_W STACK_SIZE  // stack = NEWARRAY(STACK_SIZE)
     NEWARRAY
     ISTORE stack
+
+// since the memory technically doesn't have to be initialised to 0, I put this in for safety
+init_mem_loop:
+    LDC_W MEMORY_SIZE
+    ILOAD memptr
+    IF_ICMPEQ done_init_mem
+
+    BIPUSH 0
+    ILOAD memptr
+    ILOAD memory
+    IASTORE
+
+    IINC memptr 1
+    GOTO init_mem_loop
+
+done_init_mem:
+    BIPUSH 0
+    ISTORE memptr
 
 exec_loop:
     // if we're at the end of the program, return
@@ -537,9 +559,7 @@ done:
     IRETURN
 .end-method
 
-// method to debug this mess, note will use some ANSI characters, so maybe not
-// super useful on Windows
-//
+// method to debug this mess
 // @param char   - the character to deal with
 // @param mem    - the memory value after the instruction
 // @param memptr - the index in the memory array
@@ -633,7 +653,7 @@ done:
     IRETURN
 .end-method
 
-// methods used from SimpleCalc to print numbers
+
 .method printNumber(a)
 	ILOAD a
 	BIPUSH 10
